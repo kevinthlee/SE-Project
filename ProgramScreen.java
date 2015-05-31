@@ -50,7 +50,7 @@ public class ProgramScreen extends JPanel implements ActionListener {
 		 * add(buttonPanel,BorderLayout.SOUTH);
 		 */
 
-		icon = new ImageIcon("img_menu/information_back.png");
+		icon = new ImageIcon("img_menu/information_back_1.png");
 		setLayout(new BorderLayout());
 		// setLayout(null);
 		buttonPanel = new JPanel() {
@@ -66,16 +66,25 @@ public class ProgramScreen extends JPanel implements ActionListener {
 		buttonPanel.setLayout(null);
 
 		exit = new JButton(new ImageIcon("img_menu/exit.png"));
-		exit.setSize(30, 30);
-		exit.setLocation(550, 20);
+		exit.setSize(50, 50);
+		exit.setLocation(520, 20);
+		exit.setBorderPainted(false);
+		exit.setFocusPainted(false);
+		exit.setContentAreaFilled(false);
+				
 
 		back = new JButton(new ImageIcon("img_menu/backbutton.png"));
-		back.setSize(30, 30);
+		back.setSize(50, 50);
 		back.setLocation(20, 20);
+		back.setBorderPainted(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
 
 		buttonPanel.add(back);
 		buttonPanel.add(exit);
+		
 		// add(back);
+		
 		back.addActionListener(this);
 		exit.addActionListener(this);
 
