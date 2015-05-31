@@ -14,10 +14,10 @@ import java.util.StringTokenizer;
 
 public class WordBook {
 	
-	String[] colNames={"¥‹æÓ", "∂Ê", "≥≠¿Ãµµ"};
+	String[] colNames={"¥‹æÓ", "∂Ê", "¡÷¡¶"};
 	Object[][] rowData;
 	Scanner loadWords;
-	ArrayList<Word> wordsList; 
+	ArrayList<Word> wordsList;
 	String tempLine;
 	StringTokenizer tokenizer;
 	PrintWriter out;
@@ -150,6 +150,37 @@ public class WordBook {
 		
 		out.println(word.word+"	"+word.mean+"	"+word.level);
 		
+		
+		out.close();
+	}
+	public void delete(Word word){
+		int i=0;
+		ArrayList<String> stringList = new ArrayList<String>();
+		Scanner read = null;
+		try {
+			read = new Scanner(new BufferedReader(new FileReader("tag.txt")));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		while(read.hasNext()){
+			stringList.add(read.nextLine());			
+		}
+		read.close();
+		
+		try {
+			out = new PrintWriter(new FileWriter("tag.txt"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		while(i<stringList.size()){
+			out.println(stringList.get(i));
+			i++;
+		}
+		
+		out.println(word.word+"	"+word.mean+"	"+word.level);
+		
 		out.close();
 	}
 	public void deleteTag(Word word){
@@ -183,8 +214,40 @@ public class WordBook {
 		while(i<stringList.size()){
 			out.println(stringList.get(i++));
 		}
+		
 		out.close();
 	}
+	
+	public void loadGraphs(String list) throws IOException{
+		int i=0;
+		wordsList = new ArrayList<Word>();
+		tempLine = new String();
+		loadWords = new Scanner(new BufferedReader(new FileReader(list)));
+		
+		while(loadWords.hasNext()){
+			
+			tempLine = loadWords.nextLine();
+			tokenizer = new StringTokenizer(tempLine,"	");
+
+			while(tokenizer.hasMoreTokens()){
+				wordsList.add(new Word(tokenizer.nextToken(),tokenizer.nextToken()));	
+			}
+			
+			i++;
+		}
+		loadWords.close();
+		
+		i=0;
+		rowData = new Object[wordsList.size()][2];
+		while(i<wordsList.size()){
+			rowData[i][0] = wordsList.get(i).time;
+			rowData[i][1] = wordsList.get(i).score;
+			i++;
+		}
+		
+	
+		
+}
 
 	public Object[][] getRowData(){
 		return rowData;
