@@ -48,29 +48,31 @@ public class LearnScreen_e extends JPanel implements ActionListener {
 	JButton wordsBookOK;
 
 	ImageIcon icon;
+	ImageIcon icon_left;
+	ImageIcon icon_right;
+	ImageIcon star;
 
 	public LearnScreen_e() throws IOException {
-		icon = new ImageIcon("background.png");
-
-		// mPanel = new JPanel();
+		icon = new ImageIcon("k.png");
 		wordBook = new WordBook();
 		setLayout(new BorderLayout());
-	// mPanel.setLayout(new BorderLayout());
 
+		
 		titlePanel = new JPanel();
-		titlePanel.setBackground(Color.BLACK);
-		titleLabel = new JLabel(new ImageIcon("img_menu/learning.png"));
+		/*titlePanel.setBackground();
+		titleLabel = new JLabel(new ImageIcon(""));
 		titleLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 25));
 		titleLabel.setForeground(Color.WHITE);
 		titlePanel.add(titleLabel);
 		
-		add(titlePanel, BorderLayout.NORTH);
+		add(titlePanel, BorderLayout.NORTH);*/
 
 		// mPanel.add(titlePanel,BorderLayout.NORTH);
 
 		lPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
-				g.drawImage(icon.getImage(), 0, 0, null);
+				icon_left = new ImageIcon("img_menu/word_study_back_left.png");
+				g.drawImage(icon_left.getImage(), 0, 0, null);
 				setOpaque(false);
 				super.paintComponent(g);
 			}
@@ -81,7 +83,8 @@ public class LearnScreen_e extends JPanel implements ActionListener {
 
 		rPanel = new JPanel() {
 			public void paintComponent(Graphics g) {
-				g.drawImage(icon.getImage(), 0, 0, null);
+				icon_right = new ImageIcon("img_menu/word_study_back_right.png");
+				g.drawImage(icon_right.getImage(), 0, 0, null);
 				setOpaque(false);
 				super.paintComponent(g);
 			}
@@ -91,16 +94,27 @@ public class LearnScreen_e extends JPanel implements ActionListener {
 		rPanel.setPreferredSize(new Dimension(190, 50));
 
 		back = new JButton(new ImageIcon("img_menu/backbutton.png"));
+		
 		exit = new JButton(new ImageIcon("img_menu/exit.png"));
-
+		exit.setBorderPainted(false);
+		exit.setFocusPainted(true);
+		exit.setContentAreaFilled(false);
+		
+				
 		lPanel.add(back);
 		rPanel.add(exit);
 
-		back.setSize(30, 30);
-		back.setLocation(20, 10);
+		back.setSize(50, 50);
+		back.setLocation(20, 20);
+		back.setBorderPainted(false);
+		back.setFocusPainted(true);
+		back.setContentAreaFilled(false);
 
-		exit.setSize(30, 30);
-		exit.setLocation(150, 10);
+		
+		
+		
+		exit.setSize(50, 50);
+		exit.setLocation(130, 20);
 
 		// t = new JTextArea("");
 		// w = new TextArea("");
@@ -111,12 +125,15 @@ public class LearnScreen_e extends JPanel implements ActionListener {
 		// lPanel.add(w);
 
 		wordsBookList = new JComboBox(WordBook.wordBookList());
-		wordsBookList.setSize(100, 30);
-		wordsBookList.setLocation(0, 50);
+		wordsBookList.setSize(100, 50);
+		wordsBookList.setLocation(0, 150);
 
-		wordsBookOK = new JButton("º±≈√");
-		wordsBookOK.setSize(60, 30);
-		wordsBookOK.setLocation(130, 50);
+		wordsBookOK = new JButton(new ImageIcon("img_menu/check.png"));
+		wordsBookOK.setBorderPainted(false);
+		wordsBookOK.setFocusPainted(true);
+		wordsBookOK.setContentAreaFilled(false);
+		wordsBookOK.setSize(60, 40);
+		wordsBookOK.setLocation(110, 150);
 
 		rPanel.add(wordsBookOK);
 		rPanel.add(wordsBookList);
@@ -133,16 +150,19 @@ public class LearnScreen_e extends JPanel implements ActionListener {
 		wordViewTable.setRowSorter(sorter);
 		wordView = new JScrollPane(wordViewTable);
 		wordView.setSize(350, 480);
-		wordView.setLocation(25, 50);
+		wordView.setLocation(25, 100);
 		lPanel.add(wordView);
 
 		add(lPanel, BorderLayout.CENTER);
 
 		// mPanel.add(lPanel,BorderLayout.CENTER);
 
-		tagButton = new JButton("°Ÿ");
-		tagButton.setSize(130, 60);
-		tagButton.setLocation(20, 110);
+		tagButton = new JButton(new ImageIcon("img_menu/star_1.png"));
+		tagButton.setBorderPainted(false);
+		tagButton.setFocusPainted(true);
+		tagButton.setContentAreaFilled(false);
+		tagButton.setSize(100, 100);
+		tagButton.setLocation(15, 220);
 		/*
 		 * addButton = new JButton("√ﬂ∞°"); addButton.setSize(130,60);
 		 * addButton.setLocation(20, 300); testButton = new JButton("TEST");
@@ -184,11 +204,11 @@ public class LearnScreen_e extends JPanel implements ActionListener {
 
 	}
 
-	public void paintComponent(Graphics g) {
+	/*public void paintComponent(Graphics g) {
 		g.drawImage(icon.getImage(), 0, 0, getWidth(), getHeight(), this);
 		setOpaque(false);
 		super.paintComponent(g);
-	}
+	}*/
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == tagButton) {
