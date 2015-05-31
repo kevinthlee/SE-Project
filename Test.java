@@ -47,7 +47,7 @@ public class Test {
 			e.printStackTrace();
 		}
 		time = System.currentTimeMillis(); 
-		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-mm-dd");
 		timeString = dayTime.format(new Date(time));
 		mixWords();
 	}
@@ -175,7 +175,7 @@ public class Test {
 		ArrayList<String> stringList = new ArrayList<String>();
 		Scanner read = null;
 		try {
-			read = new Scanner(new BufferedReader(new FileReader("wrong.txt")));
+			read = new Scanner(new BufferedReader(new FileReader("tag.txt")));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -186,7 +186,7 @@ public class Test {
 		read.close();
 		
 		try {
-			out = new PrintWriter(new FileWriter("wrong.txt"));
+			out = new PrintWriter(new FileWriter("tag.txt"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -233,7 +233,7 @@ public class Test {
 		else
 			typ = "∞¥∞¸Ωƒ";
 		
-		out.println("Ω√«Ë¿œΩ√ : "+timeString+"   ¿œ¬˜ : "+selectedDay+"   Ω√«Ë¿Ø«¸ : "+typ+"   ¡°ºˆ : "+score+"/20");
+		out.println(timeString+"\t"+score);
 		
 		out.close();
 	}
