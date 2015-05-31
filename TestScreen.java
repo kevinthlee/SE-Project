@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,14 +20,17 @@ import javax.swing.JTextPane;
 import leaf.Test;
 
 public class TestScreen extends JPanel implements ActionListener{
-	
+	ImageIcon icon;
 	JPanel titlePanel;
 	
 	JPanel testPanel;
 	JPanel testNorthPanel;
 	JPanel testCenterPanel;
 	JPanel testSouthPanel;
+	JPanel buttonPanel;
+	
 	JButton nextButton;
+	
 	JTextField answerField;
 	JTextPane quizArea;
 	JRadioButton answer1;
@@ -36,7 +41,6 @@ public class TestScreen extends JPanel implements ActionListener{
 	JRadioButton dummyRadio;
 	ButtonGroup multipleAnswer;
 	
-	JPanel buttonPanel;
 	
 	JLabel titleLabel, nameLabel;
 	
@@ -48,12 +52,26 @@ public class TestScreen extends JPanel implements ActionListener{
 		
 		setLayout(new BorderLayout());
 		
-		test = new Test(Main.getMenu().getTestChoiceScreen().getTestType(),Main.getMenu().getTestChoiceScreen().getSelectDay(),this);
+		test = new Test(Main.getMenu().getChoiceScreen().getTestChoiceScreen().getTestType(), Main.getMenu().getChoiceScreen().getTestChoiceScreen().getSelectDay(), this);
+		
+		/*
+		icon = new ImageIcon("img_menu/learning_back.png");
+		setLayout(new BorderLayout());
+		// setLayout(null);
+		
+		testPanel = new JPanel() {
+			public void paintComponent(Graphics g) {
+				g.drawImage(icon.getImage(), 0, 0, null);
+				setOpaque(false);
+				super.paintComponent(g);
+			}
+		};
+		*/
 		
 		// title Panel
 		titlePanel = new JPanel();
 		titlePanel.setBackground(Color.BLACK);
-		titleLabel = new JLabel("¥‹æÓ Test");
+		titleLabel = new JLabel("Test");
 		titleLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ",Font.BOLD,25));
 		titleLabel.setForeground(Color.WHITE);
 		
@@ -128,11 +146,9 @@ public class TestScreen extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == exit){
-			
 			test.endTest();
 			Main.getMenu().remove(this);
 			Main.getMenu().getFramePanel().setVisible(true);
-			
 		}else if(e.getSource() == nextButton){
 			
 			test.checkAnswer();
