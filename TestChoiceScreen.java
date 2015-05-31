@@ -34,7 +34,7 @@ public class TestChoiceScreen extends JDialog implements ActionListener{
 	int testType;
 	boolean testStartBool=false;
 	String selectDay;
-	
+	TestChoiceScreen testChoice;
 	public TestChoiceScreen() {
 		
 		setSize(200,150);
@@ -113,5 +113,8 @@ public class TestChoiceScreen extends JDialog implements ActionListener{
 
 	public String getSelectDay(){
 		return selectDay;
+	}
+	public TestChoiceScreen getTestChoiceScreen() {
+		return testChoice;
 	}
 }
