@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ChoiceScreen extends JPanel implements ActionListener {
 	ImageIcon icon;
-	JButton easy;
+	JButton word_study;
 	JButton favorite;
 	JButton test;
 	JButton back;
@@ -23,7 +23,7 @@ public class ChoiceScreen extends JPanel implements ActionListener {
 	TestScreen testScreen;
 
 	public ChoiceScreen() throws IOException {
-		icon = new ImageIcon("img_menu/background.png");
+		icon = new ImageIcon("img_menu/learning_back.png");
 		setLayout(new BorderLayout());
 		// setLayout(null);
 		buttonPanel = new JPanel() {
@@ -38,27 +38,33 @@ public class ChoiceScreen extends JPanel implements ActionListener {
 		buttonPanel.setLayout(null);
 
 		back = new JButton(new ImageIcon("img_menu/backbutton.png"));
-		back.setSize(30, 30);
+		back.setSize(50, 50);
 		back.setLocation(20, 20);
+		back.setBorderPainted(false);
+		back.setFocusPainted(true);
+		back.setContentAreaFilled(false);
 
 		exit = new JButton(new ImageIcon("img_menu/exit.png"));
-		exit.setSize(30, 30);
-		exit.setLocation(550, 20);
+		exit.setBorderPainted(false);
+		exit.setFocusPainted(false);
+		exit.setContentAreaFilled(false);
+		exit.setSize(50, 50);
+		exit.setLocation(520, 20);
 
-		easy = new JButton(new ImageIcon("img_menu/word_learning.png"));
-		easy.setSize(145, 35);
-		easy.setLocation(227, 175);
-		buttonPanel.add(easy);
+		word_study = new JButton(new ImageIcon("img_menu/word_study.png"));
+		word_study.setSize(210, 60);
+		word_study.setLocation(200, 270);
+		buttonPanel.add(word_study);
 		// add(easy);
 
 		favorite = new JButton(new ImageIcon("img_menu/favorite.png"));
-		favorite.setSize(145, 35);
-		favorite.setLocation(227, 245);
+		favorite.setSize(210, 60);
+		favorite.setLocation(200, 340);
 		buttonPanel.add(favorite);
 
 		test = new JButton(new ImageIcon("img_menu/test.png"));
-		test.setSize(145, 35);
-		test.setLocation(227, 315);
+		test.setSize(210, 60);
+		test.setLocation(200, 410);
 		buttonPanel.add(test);
 		/*
 		 * middle = new JButton("¡ﬂ±ﬁ"); middle.setSize(200,100);
@@ -75,7 +81,7 @@ public class ChoiceScreen extends JPanel implements ActionListener {
 		// add(back);
 		back.addActionListener(this);
 		exit.addActionListener(this);
-		easy.addActionListener(this);
+		word_study.addActionListener(this);
 		favorite.addActionListener(this);
 		test.addActionListener(this);
 
@@ -89,7 +95,7 @@ public class ChoiceScreen extends JPanel implements ActionListener {
 			Main.getMenu().getFramePanel().setVisible(true);
 		} else if (e.getSource() == exit) {
 			System.exit(0);
-		} else if (e.getSource() == easy) {
+		} else if (e.getSource() == word_study) {
 
 			this.setVisible(false);
 			if (learnScreen_e == null) {
@@ -128,7 +134,7 @@ public class ChoiceScreen extends JPanel implements ActionListener {
 
 			if (testChoice.getTestStartBool() == true) {
 				testChoice.setTestStartBool(false);
-				framePanel.setVisible(false);
+				buttonPanel.setVisible(false);
 				testScreen = new TestScreen();
 				this.add(testScreen);
 				testScreen.updateUI();
