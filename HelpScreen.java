@@ -62,17 +62,23 @@ public class HelpScreen extends JPanel implements ActionListener {
 				super.paintComponent(g);
 			}
 		};
-		buttonPanel.setBackground(Color.CYAN);
-		setBackground(Color.red);
+		//buttonPanel.setBackground(Color.CYAN);
+		//setBackground(Color.red);
 		buttonPanel.setLayout(null);
 
 		exit = new JButton(new ImageIcon("img_menu/exit.png"));
-		exit.setSize(30, 30);
-		exit.setLocation(550, 20);
+		exit.setSize(50, 50);
+		exit.setLocation(520, 20);
+		exit.setBorderPainted(false);
+		exit.setFocusPainted(true);
+		exit.setContentAreaFilled(false);
 
 		back = new JButton(new ImageIcon("img_menu/backbutton.png"));
-		back.setSize(30, 30);
-		back.setLocation(20, 20);
+		back.setSize(50, 50);
+		back.setLocation(20, 15);
+		back.setBorderPainted(false);
+		back.setFocusPainted(true);
+		back.setContentAreaFilled(false);
 
 		buttonPanel.add(back);
 		buttonPanel.add(exit);
