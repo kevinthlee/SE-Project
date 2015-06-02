@@ -35,6 +35,7 @@ public class Test {
 	long time;
 	PrintWriter out;
 	String timeString;
+	boolean isEnd;
 	
 	public Test(int testType, String selectedDay, TestScreen screen) {
 		this.testType = testType;
@@ -75,14 +76,16 @@ public class Test {
 		}
 	}
 	
-	public void submitQuiz(){
+	public boolean submitQuiz(){
 		
 		if(testType == TEST_TYPE_1){
 			if(countNum<MAX_QUIZ_NUM){
 				testScreen.getQuizArea().setText((countNum+1)+". "+mixWordsList.get(countNum).mean);
 				testScreen.getQuizArea().updateUI();
+				isEnd = false;
 			}else{
 				endTest();
+				isEnd = true;
 			}
 		}else if(testType == TEST_TYPE_2){
 			
@@ -126,11 +129,15 @@ public class Test {
 				testScreen.getAnswer4().updateUI();
 				testScreen.getAnswer5().setText(answerList.get(4).mean);
 				testScreen.getAnswer5().updateUI();
+				isEnd = false;
 			}else{
 				endTest();
+				isEnd = true;
 			}
+			
 		}
 
+		return isEnd;
 	}
 	
 	public void checkAnswer(){
@@ -241,7 +248,7 @@ public class Test {
 	public void endTest(){
 		JOptionPane.showMessageDialog(testScreen, "¡°ºˆ : "+score+"/20");
 		saveResult();
-		Main.getMenu().remove(testScreen);
+		//Main.getMenu().remove(testScreen);
 		Main.getMenu().getFramePanel().setVisible(true);
 	}
 	
