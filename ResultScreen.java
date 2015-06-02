@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import leaf.Graphs;
 
 public class ResultScreen extends JPanel implements ActionListener {
 	ImageIcon icon;
@@ -32,7 +31,6 @@ public class ResultScreen extends JPanel implements ActionListener {
 	JLabel titleLabel;
 	JTextArea helpText;
 	
-	JButton graph;
 	public ResultScreen(){
 		icon = new ImageIcon("img_menu/result_back.png");
 		setLayout(new BorderLayout());
@@ -96,14 +94,6 @@ public class ResultScreen extends JPanel implements ActionListener {
 		
 		
 		
-		//graph √ﬂ∞°πˆ∆∞
-		graph = new JButton(new ImageIcon("img_menu/exit.png"));
-		graph.setFocusPainted(false);
-		graph.setContentAreaFilled(false);
-		graph.setSize(50, 50);
-		graph.setLocation(400, 20);
-		graph.addActionListener(this);
-		contentPanel.add(graph);
 		
 		add(contentPanel,BorderLayout.CENTER);
 		
@@ -142,9 +132,6 @@ public class ResultScreen extends JPanel implements ActionListener {
 			}
 		if(e.getSource() == exit){
 			System.exit(0);
-		}
-		if(e.getSource() == graph){
-			
 		}
 	}
 }
