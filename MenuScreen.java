@@ -154,7 +154,6 @@ public class MenuScreen extends JFrame implements ActionListener {
 				}
 				this.add(choiceScreen);
 			} else {
-				this.add(choiceScreen);
 				// choiceScreen.updateUI();
 				choiceScreen.setVisible(true);
 			}
