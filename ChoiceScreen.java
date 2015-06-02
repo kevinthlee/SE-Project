@@ -33,8 +33,8 @@ public class ChoiceScreen extends JPanel implements ActionListener {
 				super.paintComponent(g);
 			}
 		};
-		//buttonPanel.setBackground(Color.CYAN);
-		//setBackground(Color.red);
+		// buttonPanel.setBackground(Color.CYAN);
+		// setBackground(Color.red);
 		buttonPanel.setLayout(null);
 
 		back = new JButton(new ImageIcon("img_menu/backbutton.png"));
@@ -133,13 +133,16 @@ public class ChoiceScreen extends JPanel implements ActionListener {
 			testChoice = new TestChoiceScreen();
 
 			if (testChoice.getTestStartBool() == true) {
+				this.setVisible(false);
 				testChoice.setTestStartBool(false);
-				buttonPanel.setVisible(false);
-				testScreen = new TestScreen();
-				this.add(testScreen);
+				if (testScreen == null) {
+					testScreen = new TestScreen();
+					Main.getMenu().add(testScreen);
+				} else {
+					testScreen.setVisible(true);
+				}
 				testScreen.updateUI();
 			}
-
 		}
 		/*
 		 * else if(e.getSource() == middle){
