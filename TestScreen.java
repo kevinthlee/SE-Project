@@ -109,7 +109,7 @@ public class TestScreen extends JPanel implements ActionListener {
 		testPanel.add(quizArea);
 
 		// testNorthPanel.setPreferredSize(new Dimension(0,150));
-		System.out.println(test.getTestType());
+
 		if (test.getTestType() == Test.TEST_TYPE_1) {
 			answerField = new JTextField(70);
 			answerField.setSize(150, 30);
