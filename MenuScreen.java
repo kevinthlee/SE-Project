@@ -146,9 +146,11 @@ public class MenuScreen extends JFrame implements ActionListener {
 			System.exit(0);
 		}else if (e.getSource() == learning) {
 			framePanel.setVisible(false);
+			testScreen = null;
 			if (choiceScreen == null) {
 				try {
 					choiceScreen = new ChoiceScreen();
+					
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -171,7 +173,7 @@ public class MenuScreen extends JFrame implements ActionListener {
 				wordBookScreen.setVisible(true);
 			}
 		} else if (e.getSource() == result) {
-
+			
 			framePanel.setVisible(false);
 
 			if (resultScreen == null) {
@@ -181,7 +183,6 @@ public class MenuScreen extends JFrame implements ActionListener {
 			} else {
 				resultScreen.setVisible(true);
 			}
-
 		} else if (e.getSource() == program) {
 
 			framePanel.setVisible(false);
