@@ -18,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import leaf.Result;
 
 
 public class ResultScreen extends JPanel implements ActionListener {
@@ -34,7 +33,6 @@ public class ResultScreen extends JPanel implements ActionListener {
 	JTextArea helpText;
 	JPanel Graph;
 	
-	Result result;
 	public ResultScreen(){
 		icon = new ImageIcon("img_menu/result_back.png");
 		setLayout(new BorderLayout());
@@ -50,7 +48,6 @@ public class ResultScreen extends JPanel implements ActionListener {
 		
 		//content panel
 		
-		result = new Result();
 		contentPanel = new JPanel(){
 			public void paintComponent(Graphics g) {
 				g.drawImage(icon.getImage(), 0, 0, null);
