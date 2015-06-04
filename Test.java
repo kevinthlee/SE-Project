@@ -42,16 +42,21 @@ public class Test {
 		this.selectedDay = selectedDay;
 		testScreen = screen;
 		wordBook = new WordBook();
+		
 		try {
 			wordBook.loadWords("wordBooks/"+selectedDay);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		time = System.currentTimeMillis(); 
-		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
 		timeString = dayTime.format(new Date(time));
 		mixWords();
-	}
+	
+		}
+		
+	
 	
 	//∑£¥˝¿∏∑Œ ¡ﬂ∫πæ¯¿Ã πÆ¡¶∏¶ ºØ¿Ω
 	public void mixWords(){
