@@ -127,7 +127,7 @@ public class ChoiceScreen extends JPanel implements ActionListener {
 			} else {
 				favoriteScreen.setVisible(true);
 
-			}
+			} 
 
 		} else if (e.getSource() == test) {
 			testChoice = new TestChoiceScreen();
@@ -135,6 +135,8 @@ public class ChoiceScreen extends JPanel implements ActionListener {
 			if (testChoice.getTestStartBool() == true) {
 				this.setVisible(false);
 				testChoice.setTestStartBool(false);
+				testScreen = null;
+				
 				if (testScreen == null) {
 					testScreen = new TestScreen();
 					Main.getMenu().add(testScreen);
