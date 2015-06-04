@@ -101,9 +101,9 @@ public class WordBookScreen extends JPanel implements ActionListener {
 		wordsBookList = new JComboBox(WordBook.wordBookList());
 		wordsBookList.setSize(100, 30);
 		wordsBookList.setLocation(50, 130);
+
 		
-		
-		wordsBookOK = new JButton(new ImageIcon("img_menu/check.png"));
+		wordsBookOK = new JButton(new ImageIcon("img_menu/refresh.png"));
 		wordsBookOK.addActionListener(this);
 		wordsBookOK.setSize(50, 50);
 		wordsBookOK.setLocation(160, 120);
@@ -132,10 +132,10 @@ public class WordBookScreen extends JPanel implements ActionListener {
 		wrongWordButton.setContentAreaFilled(false);
 		
 		
-		contentPanel.add(wordsBookList);
-		contentPanel.add(wordsBookOK);
-		contentPanel.add(tagViewButton);
-		contentPanel.add(wrongWordButton);
+		//contentPanel.add(wordsBookList);
+		//contentPanel.add(wordsBookOK);
+		//contentPanel.add(tagViewButton);
+		//contentPanel.add(wrongWordButton);
 		
 		//contentCenterPanel = new JPanel();
 		//JLabel blank = new JLabel("  ");
@@ -160,14 +160,22 @@ public class WordBookScreen extends JPanel implements ActionListener {
 		tagButton.setContentAreaFilled(false);
 		
 		
-		
+
+		deleteButton = new JButton(new ImageIcon("img_menu/delete.png"));
+		deleteButton.addActionListener(this);
+		deleteButton.setSize(80, 80);
+		deleteButton.setLocation(450, 270);
+		deleteButton.setBorderPainted(false);
+		deleteButton.setFocusPainted(true);
+		deleteButton.setContentAreaFilled(false);
+
 		
 		
 		contentPanel.add(searchTextField);
 		contentPanel.add(addButton);
 		contentPanel.add(tagButton);
 		
-		wordBook.loadWords("wordBooks/"+wordsBookList.getSelectedItem().toString());
+		wordBook.loadWords("wordBooks/00. ¥‹æÓ¿Â.txt");
 		
 		
 		
@@ -206,10 +214,10 @@ public class WordBookScreen extends JPanel implements ActionListener {
 		back.setContentAreaFilled(false);
 		
 		
-		contentPanel.add(save);
+		//contentPanel.add(save);
 		contentPanel.add(exit);
 		contentPanel.add(back);
-		
+		contentPanel.add(deleteButton);
 		
 		add(contentPanel,BorderLayout.CENTER);
 		
@@ -247,6 +255,7 @@ public class WordBookScreen extends JPanel implements ActionListener {
 			defaultTableModel.setDataVector(wordBook.getRowData(), wordBook.getColnames());
 		}else if(e.getSource() == addButton){
 			wordAddScreen = new WordAddScreen(wordBook,this);
+			wordBook.save(wordsBookList.getSelectedItem().toString());
 		}else if(e.getSource() == tagButton){
 			if(1 <= wordViewTable.getSelectedColumnCount()){
 				wordBook.addTag(wordBook.getWordsList().get(wordViewTable.getSelectedRow()));
@@ -268,7 +277,18 @@ public class WordBookScreen extends JPanel implements ActionListener {
 				e1.printStackTrace();
 			}
 			defaultTableModel.setDataVector(wordBook.getRowData(), wordBook.getColnames());
+		} else if (e.getSource() == deleteButton) {
+			if (1 <= wordViewTable.getSelectedColumnCount()) {
+				wordBook.delete(wordBook.getWordsList().get(
+						wordViewTable.getSelectedRow()));
+				try {
+					wordBook.loadWords("wordBooks/"+wordsBookList.getSelectedItem().toString());
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				defaultTableModel.setDataVector(wordBook.getRowData(), wordBook.getColnames());
+				JOptionPane.showMessageDialog(this, "¥‹æÓ¿Âø°º≠ ªË¡¶µ«æ˙Ω¿¥œ¥Ÿ.");
+			}
 		}
-	}
-
+	}	 
 }
