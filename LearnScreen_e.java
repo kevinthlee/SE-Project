@@ -212,10 +212,11 @@ public class LearnScreen_e extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == tagButton) {
+			
 			if (1 <= wordViewTable.getSelectedColumnCount()) {
 				wordBook.addTag(wordBook.getWordsList().get(
 						wordViewTable.getSelectedRow()));
-				JOptionPane.showMessageDialog(this, "≈¬±◊ø° √ﬂ∞°µ«æ˙Ω¿¥œ¥Ÿ.");
+				JOptionPane.showMessageDialog(this, "¡Ò∞‹√£±‚ø° √ﬂ∞°µ«æ˙Ω¿¥œ¥Ÿ.");
 			}
 		} else if (e.getSource() == wordsBookOK) {
 			try {
