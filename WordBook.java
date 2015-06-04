@@ -31,7 +31,6 @@ public class WordBook {
 		
 		return wordBookList;
 	}
-	
 	//¥‹æÓ¿Â∏∏µÈ±‚øÎ
 	public void wordmake(){
 		int i=0,j=0;
@@ -133,7 +132,7 @@ public class WordBook {
 		}
 		
 		while(read.hasNext()){
-			stringList.add(read.nextLine());			
+			stringList.add(read.nextLine());	
 		}
 		read.close();
 		
@@ -153,33 +152,38 @@ public class WordBook {
 		
 		out.close();
 	}
+
 	public void delete(Word word){
 		int i=0;
 		ArrayList<String> stringList = new ArrayList<String>();
 		Scanner read = null;
 		try {
-			read = new Scanner(new BufferedReader(new FileReader("tag.txt")));
+			read = new Scanner(new BufferedReader(new FileReader("wordBooks/00. ¥‹æÓ¿Â.txt")));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		
 		while(read.hasNext()){
-			stringList.add(read.nextLine());			
+		String str = read.nextLine();
+		tokenizer = new StringTokenizer(str,"	");
+		if(word.word.equals(tokenizer.nextToken()))
+		;
+		else
+			stringList.add(str);
+			
 		}
+		
 		read.close();
 		
 		try {
-			out = new PrintWriter(new FileWriter("tag.txt"));
+			out = new PrintWriter(new FileWriter("wordBooks/00. ¥‹æÓ¿Â.txt"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		while(i<stringList.size()){
-			out.println(stringList.get(i));
-			i++;
+			out.println(stringList.get(i++));
 		}
-		
-		out.println(word.word+"	"+word.mean+"	"+word.level);
 		
 		out.close();
 	}
@@ -218,36 +222,7 @@ public class WordBook {
 		out.close();
 	}
 	
-	public void loadGraphs(String list) throws IOException{
-		int i=0;
-		wordsList = new ArrayList<Word>();
-		tempLine = new String();
-		loadWords = new Scanner(new BufferedReader(new FileReader(list)));
-		
-		while(loadWords.hasNext()){
-			
-			tempLine = loadWords.nextLine();
-			tokenizer = new StringTokenizer(tempLine,"	");
 
-			while(tokenizer.hasMoreTokens()){
-				wordsList.add(new Word(tokenizer.nextToken(),tokenizer.nextToken()));	
-			}
-			
-			i++;
-		}
-		loadWords.close();
-		
-		i=0;
-		rowData = new Object[wordsList.size()][2];
-		while(i<wordsList.size()){
-			rowData[i][0] = wordsList.get(i).time;
-			rowData[i][1] = wordsList.get(i).score;
-			i++;
-		}
-		
-	
-		
-}
 
 	public Object[][] getRowData(){
 		return rowData;
