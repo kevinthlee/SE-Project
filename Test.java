@@ -50,7 +50,7 @@ public class Test {
 			e.printStackTrace();
 		}
 		time = System.currentTimeMillis(); 
-		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		timeString = dayTime.format(new Date(time));
 		mixWords();
 	
@@ -245,8 +245,9 @@ public class Test {
 		else
 			typ = "∞¥∞¸Ωƒ";
 		
-		out.println(timeString+"\t"+score);
-		
+		//±◊∑°«¡ ±∏«ˆ Ω«∆–Ω√ æ∆∑° ƒ⁄µÂ∑Œ ¥Î√º
+		out.println("Ω√«Ë¿œ¿⁄ : "+timeString+"\t"+"Ω√«Ë¿Ø«¸ : "+typ+"\t"+"¡°ºˆ : "+score+"πÆ¡¶/20πÆ¡¶");
+		//out.println(timeString+score);
 		out.close();
 	}
 	
