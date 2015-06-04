@@ -64,7 +64,6 @@ public class FavoriteScreen extends JPanel implements ActionListener {
 		// titlePanel.setBackground(Color.BLACK);
 
 		titleLabel = new JLabel();
-
 		// titleLabel.setFont(new Font("Bodoni Bd BT",Font.ITALIC,40));
 		// titleLabel.setForeground(Color.WHITE);
 		// contentPanel.add(titleLabel);
@@ -166,13 +165,21 @@ public class FavoriteScreen extends JPanel implements ActionListener {
 		}
 		if (e.getSource() == exit) {
 			System.exit(0);
-		} else if (e.getSource() == deleteButton) {
+		}else if (e.getSource() == deleteButton) {
 			if (1 <= wordViewTable.getSelectedColumnCount()) {
 				wordBook.deleteTag(wordBook.getWordsList().get(
 						wordViewTable.getSelectedRow()));
-				JOptionPane.showMessageDialog(this, "≈¬±◊ø° ªË¡¶µ«æ˙Ω¿¥œ¥Ÿ.");
+				try {
+					wordBook.loadWords("tag.txt");
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				defaultTableModel.setDataVector(wordBook.getRowData(),
+						wordBook.getColnames());
+				JOptionPane.showMessageDialog(this, "¡Ò∞‹√£±‚∞° ªË¡¶µ«æ˙Ω¿¥œ¥Ÿ.");
 			}
-		} else if (e.getSource() == tagViewButton) {
+		} 
+		else if (e.getSource() == tagViewButton) {
 			try {
 				wordBook.loadWords("tag.txt");
 			} catch (IOException e1) {
