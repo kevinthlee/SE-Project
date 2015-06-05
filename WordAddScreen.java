@@ -61,13 +61,13 @@ public class WordAddScreen extends JDialog implements ActionListener {
 		wordLabel.setFont(new Font("HY«ÏµÂ∂Û¿ŒM", Font.BOLD, 20));
 		wordLabel.setForeground(Color.WHITE);
 		wordLabel.setSize(50, 40);
-		wordLabel.setLocation(40, 35);
+		wordLabel.setLocation(100, 35);
 
 		meanLabel = new JLabel("∂Ê:");
 		meanLabel.setFont(new Font("HY«ÏµÂ∂Û¿ŒM", Font.BOLD, 20));
 		meanLabel.setForeground(Color.WHITE);
 		meanLabel.setSize(40, 40);
-		meanLabel.setLocation(250, 35);
+		meanLabel.setLocation(310, 35);
 
 		levelLabel = new JLabel("¡÷¡¶:");
 		levelLabel.setFont(new Font("HY«ÏµÂ∂Û¿ŒM", Font.BOLD, 20));
@@ -78,15 +78,16 @@ public class WordAddScreen extends JDialog implements ActionListener {
 		// 3∞≥¿« JTextField
 		wordField = new JTextField(10);
 		wordField.setSize(120, 30);
-		wordField.setLocation(100, 40);
+		wordField.setLocation(160, 40);
 
 		meanField = new JTextField(10);
 		meanField.setSize(120, 30);
-		meanField.setLocation(290, 40);
+		meanField.setLocation(350, 40);
 
 		levelField = new JTextField(5);
 		levelField.setSize(30, 30);
 		levelField.setLocation(510, 40);
+		levelField.setText("00");
 
 		/*
 		 * contentPanel.add(wordLabel); contentPanel.add(wordField);
@@ -99,8 +100,8 @@ public class WordAddScreen extends JDialog implements ActionListener {
 		framePanel.add(wordField);
 		framePanel.add(meanLabel);
 		framePanel.add(meanField);
-		framePanel.add(levelLabel);
-		framePanel.add(levelField);
+		//framePanel.add(levelLabel);
+		//framePanel.add(levelField);
 
 		// button panel
 		// buttonPanel = new JPanel();
