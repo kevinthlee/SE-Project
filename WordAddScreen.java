@@ -138,19 +138,32 @@ public class WordAddScreen extends JDialog implements ActionListener {
 			boolean engflag = Pattern.matches("^[a-zA-Z]*$", wordField.getText());
 			boolean korflag = Pattern.matches("^[∞°-∆R]*$", meanField.getText());
 			boolean numflag = Pattern.matches("^[0-9]{2}$", levelField.getText());
-	
-			if (engflag&&korflag&&numflag) {
-				
-				wordBook.getWordsList().add(addWord);
-				wordBook.refreshData();
-				wordBookScreen.defaultTableModel.setDataVector(
-						wordBook.getRowData(), wordBook.getColnames());
-				JOptionPane.showMessageDialog(this, wordField.getText()+" ∞° ¥‹æÓ¿Âø° √ﬂ∞°µ«æ˙Ω¿¥œ¥Ÿ.");
+			System.out.println(engflag);
+			System.out.println(korflag);
+			System.out.println(numflag);
+//			if((wordField.getText()==null)||(meanField.getText()==null)){
+//				JOptionPane.showMessageDialog(this, "ø√πŸ∏£∞‘ ¿‘∑¬µ«¡ˆ æ æ“Ω¿¥œ¥Ÿ. ¿Á¿‘∑¬«ÿ¡÷ººø‰.");	
+//			}
+			if (engflag&&korflag) {
+				if(wordField.getText().isEmpty()||meanField.getText().isEmpty()){
+					JOptionPane.showMessageDialog(this, "ø√πŸ∏£∞‘ ¿‘∑¬µ«¡ˆ æ æ“Ω¿¥œ¥Ÿ. ¿Á¿‘∑¬«ÿ¡÷ººø‰.");	
+				}else{
+					//System.out.println(wordField.getText());
+					//System.out.println(meanField.getText());
+					
+					wordBook.getWordsList().add(addWord);
+					wordBook.refreshData();
+					wordBookScreen.defaultTableModel.setDataVector(
+							wordBook.getRowData(), wordBook.getColnames());
+					JOptionPane.showMessageDialog(this, wordField.getText()+" ∞° ¥‹æÓ¿Âø° √ﬂ∞°µ«æ˙Ω¿¥œ¥Ÿ.");
+				}
+				dispose();
 			} else {
 				
 				JOptionPane.showMessageDialog(this, "ø√πŸ∏£∞‘ ¿‘∑¬µ«¡ˆ æ æ“Ω¿¥œ¥Ÿ. ¿Á¿‘∑¬«ÿ¡÷ººø‰.");	
+				dispose();
 			}
-			dispose();
+			
 		}
 
 	}
