@@ -252,7 +252,7 @@ public class Test {
 	}
 	
 	public void endTest(){
-		JOptionPane.showMessageDialog(testScreen, "¡°ºˆ : "+score+"/20");
+		JOptionPane.showMessageDialog(testScreen, "¡°ºˆ : "+score+"/20" +"\nΩ√«Ë¿ª ¡æ∑·«’¥œ¥Ÿ. ∆≤∏∞πÆ¡¶¥¬ ¡Ò∞‹√£±‚ø° √ﬂ∞°µ«æ˙Ω¿¥œ¥Ÿ.");
 		saveResult();
 		//Main.getMenu().remove(testScreen);
 		Main.getMenu().getFramePanel().setVisible(true);
