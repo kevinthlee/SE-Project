@@ -164,7 +164,7 @@ public class WordBookScreen extends JPanel implements ActionListener {
 		deleteButton = new JButton(new ImageIcon("img_menu/delete.png"));
 		deleteButton.addActionListener(this);
 		deleteButton.setSize(80, 80);
-		deleteButton.setLocation(480, 250);
+		deleteButton.setLocation(450, 270);
 		deleteButton.setBorderPainted(false);
 		deleteButton.setFocusPainted(true);
 		deleteButton.setContentAreaFilled(false);
@@ -185,7 +185,7 @@ public class WordBookScreen extends JPanel implements ActionListener {
 		TableRowSorter sorter = new TableRowSorter(wordViewTable.getModel());
 		wordViewTable.setRowSorter(sorter);
 		wordView = new JScrollPane(wordViewTable);
-		wordView.setSize(410, 400);
+		wordView.setSize(400, 400);
 		wordView.setLocation(50, 180);
 		
 		
